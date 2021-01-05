@@ -50,7 +50,7 @@ const weather = (props) => (
     )}
     {props.error && (
       <p className="weather__key">
-        Error: <span className="weather__value">{props.error}</span>{" "}
+        Error: <span className="weather__error">{props.error}</span>{" "}
       </p>
     )}
   </div>
