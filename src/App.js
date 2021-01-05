@@ -26,8 +26,8 @@ class App extends Component {
     ); // no axios library require, using fetch api to fetch the data
     const data = await api_call.json(); //converting the data to json format
     // only if the city value and the country value are passed then alone execute, else do nothing, the undermentioned
-    // source can also be written as (city && country) for truthy expression
     if (city && country) {
+      // evealuate only when the resut is truthy
       this.setState({
         // setting the state after data retrival
         temperature: data.main.temp,
@@ -54,16 +54,28 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Titles />
-        <Form getWeather={this.getWeather} />
-        <Weather
-          temperature={this.state.temperature}
-          city={this.state.city}
-          country={this.state.country}
-          humidity={this.state.humidity}
-          description={this.state.description}
-          error={this.state.error}
-        />
+        <div className="wrapper">
+          <div className="main">
+            <div className="container">
+              <div className="row">
+                <div className="col-xs-5 title-container">
+                  <Titles />
+                  <div className="col-xs-7 form-container">
+                    <Form getWeather={this.getWeather} />
+                    <Weather
+                      temperature={this.state.temperature}
+                      city={this.state.city}
+                      country={this.state.country}
+                      humidity={this.state.humidity}
+                      description={this.state.description}
+                      error={this.state.error}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
